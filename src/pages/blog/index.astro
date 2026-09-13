@@ -1,62 +1,10 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
 
-const articles = [
-  {
-    title: "Mengenal Bunga Ice Lebih Dekat",
-    excerpt:
-      "Cerita singkat tentang Bunga Ice, latar belakang, dan apa yang kami tawarkan.",
-    date: "12 September 2026",
-    category: "Tentang Kami",
-    image: "/images/article-1.jpg",
-    href: "/blog/mengenal-bunga-ice/",
-  },
-  {
-    title: "Tips Memilih Produk yang Tepat",
-    excerpt:
-      "Beberapa hal yang bisa diperhatikan sebelum memilih produk sesuai kebutuhan.",
-    date: "8 September 2026",
-    category: "Tips",
-    image: "/images/article-2.jpg",
-    href: "/blog/tips-memilih-produk/",
-  },
-  {
-    title: "Cerita dan Aktivitas Bunga Ice",
-    excerpt:
-      "Berbagai cerita, aktivitas, dan informasi terbaru dari Bunga Ice.",
-    date: "3 September 2026",
-    category: "Cerita",
-    image: "/images/article-3.jpg",
-    href: "/blog/cerita-dan-aktivitas-bunga-ice/",
-  },
-  {
-    title: "Informasi Terbaru dari Bunga Ice",
-    excerpt:
-      "Ikuti berbagai informasi dan kabar terbaru yang akan kami bagikan.",
-    date: "28 Agustus 2026",
-    category: "Informasi",
-    image: "/images/article-4.jpg",
-    href: "/blog/informasi-terbaru/",
-  },
-  {
-    title: "Tips dan Informasi untuk Pelanggan",
-    excerpt:
-      "Berbagai tips sederhana dan informasi yang mungkin berguna bagi Anda.",
-    date: "22 Agustus 2026",
-    category: "Tips",
-    image: "/images/article-5.jpg",
-    href: "/blog/tips-dan-informasi/",
-  },
-  {
-    title: "Di Balik Bunga Ice",
-    excerpt:
-      "Cerita mengenai aktivitas, proses, dan perjalanan yang ada di balik Bunga Ice.",
-    date: "15 Agustus 2026",
-    category: "Cerita",
-    image: "/images/article-6.jpg",
-    href: "/blog/di-balik-bunga-ice/",
-  },
-];
+const articles = (await getCollection("articles")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
 ---
 
 <BaseLayout
@@ -80,39 +28,70 @@ const articles = [
 
   <section class="section blog-section">
     <div class="container">
-      <div class="articles-grid">
-        {
-          articles.map((article) => (
-            <article class="article-card">
-              <a href={article.href} class="article-image">
-                <img
-                  src={article.image}
-                  alt={article.title}
-                  loading="lazy"
-                />
-              </a>
-
-              <div class="article-content">
-                <div class="article-meta">
-                  <span>{article.category}</span>
-                  <time>{article.date}</time>
-                </div>
-
-                <h2>
-                  <a href={article.href}>{article.title}</a>
-                </h2>
-
-                <p>{article.excerpt}</p>
-
-                <a href={article.href} class="read-more">
-                  Baca Artikel
-                  <span aria-hidden="true">→</span>
+      {
+        articles.length > 0 ? (
+          <div class="articles-grid">
+            {articles.map((article) => (
+              <article class="article-card">
+                <a
+                  href={`/blog/${article.data.slug}/`}
+                  class="article-image"
+                >
+                  {article.data.image ? (
+                    <img
+                      src={article.data.image}
+                      alt={article.data.title}
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div class="image-placeholder">
+                      Bunga Ice
+                    </div>
+                  )}
                 </a>
-              </div>
-            </article>
-          ))
-        }
-      </div>
+
+                <div class="article-content">
+                  <div class="article-meta">
+                    <span>{article.data.category}</span>
+
+                    <time datetime={article.data.date.toISOString()}>
+                      {article.data.date.toLocaleDateString("id-ID", {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                      })}
+                    </time>
+                  </div>
+
+                  <h2>
+                    <a href={`/blog/${article.data.slug}/`}>
+                      {article.data.title}
+                    </a>
+                  </h2>
+
+                  <p>{article.data.excerpt}</p>
+
+                  <a
+                    href={`/blog/${article.data.slug}/`}
+                    class="read-more"
+                  >
+                    Baca Artikel
+                    <span aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div class="empty-state">
+            <h2>Belum ada artikel</h2>
+            <p>
+              Artikel akan ditampilkan di halaman ini setelah
+              konten ditambahkan.
+            </p>
+          </div>
+        )
+      }
     </div>
   </section>
 </BaseLayout>
@@ -171,6 +150,17 @@ const articles = [
     transform: scale(1.04);
   }
 
+  .image-placeholder {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    min-height: 220px;
+    place-items: center;
+    background: var(--color-muted);
+    color: var(--color-text-soft);
+    font-weight: 700;
+  }
+
   .article-content {
     padding: 24px;
   }
@@ -217,6 +207,23 @@ const articles = [
 
   .read-more:hover span {
     transform: translateX(4px);
+  }
+
+  .empty-state {
+    padding: 60px 30px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    text-align: center;
+  }
+
+  .empty-state h2 {
+    margin-bottom: 10px;
+  }
+
+  .empty-state p {
+    margin-bottom: 0;
+    color: var(--color-text-soft);
   }
 
   @media (min-width: 700px) {
