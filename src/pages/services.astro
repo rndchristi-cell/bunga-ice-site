@@ -1,26 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
 
-const services = [
-  {
-    number: "01",
-    title: "Layanan Utama",
-    description:
-      "Informasi mengenai layanan utama yang tersedia untuk pelanggan.",
-  },
-  {
-    number: "02",
-    title: "Produk Unggulan",
-    description:
-      "Pilihan produk atau penawaran yang menjadi salah satu unggulan Bunga Ice.",
-  },
-  {
-    number: "03",
-    title: "Solusi untuk Anda",
-    description:
-      "Pilihan layanan atau produk yang dapat disesuaikan dengan kebutuhan pelanggan.",
-  },
-];
+const services = (await getCollection("services"))
+  .filter((service) => service.data.active)
+  .sort((a, b) => a.data.order - b.data.order);
 ---
 
 <BaseLayout
@@ -31,9 +15,7 @@ const services = [
     <div class="container">
       <p class="eyebrow">Layanan & Produk</p>
 
-      <h1>
-        Apa yang kami tawarkan
-      </h1>
+      <h1>Apa yang kami tawarkan</h1>
 
       <p>
         Kenali berbagai layanan, produk, dan penawaran yang tersedia
@@ -44,24 +26,43 @@ const services = [
 
   <section class="section services-section">
     <div class="container">
-      <div class="services-grid">
-        {
-          services.map((service) => (
-            <article class="service-card">
-              <span class="service-number">{service.number}</span>
+      {
+        services.length > 0 ? (
+          <div class="services-grid">
+            {services.map((service, index) => (
+              <article class="service-card">
+                <span class="service-number">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
 
-              <h2>{service.title}</h2>
+                {service.data.image && (
+                  <img
+                    src={service.data.image}
+                    alt={service.data.title}
+                    class="service-image"
+                  />
+                )}
 
-              <p>{service.description}</p>
+                <h2>{service.data.title}</h2>
 
-              <a href="/contact/" class="service-link">
-                Tanya lebih lanjut
-                <span aria-hidden="true">→</span>
-              </a>
-            </article>
-          ))
-        }
-      </div>
+                <p>{service.data.description}</p>
+
+                <a
+                  href={service.data.link || "/contact/"}
+                  class="service-link"
+                >
+                  Tanya lebih lanjut
+                  <span aria-hidden="true">→</span>
+                </a>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <p class="empty-state">
+            Belum ada layanan yang tersedia.
+          </p>
+        )
+      }
     </div>
   </section>
 </BaseLayout>
@@ -112,11 +113,19 @@ const services = [
 
   .service-number {
     display: inline-block;
-    margin-bottom: 36px;
+    margin-bottom: 24px;
     color: var(--color-primary);
     font-size: 0.85rem;
     font-weight: 800;
     letter-spacing: 0.08em;
+  }
+
+  .service-image {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    margin-bottom: 24px;
+    border-radius: var(--radius-md);
   }
 
   .service-card h2 {
@@ -143,6 +152,10 @@ const services = [
 
   .service-link:hover span {
     transform: translateX(4px);
+  }
+
+  .empty-state {
+    color: var(--color-text-soft);
   }
 
   @media (min-width: 700px) {

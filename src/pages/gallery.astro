@@ -1,32 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
 
-const galleryItems = [
-  {
-    title: "Suasana Bunga Ice",
-    image: "/images/gallery-1.jpg",
-  },
-  {
-    title: "Produk Unggulan",
-    image: "/images/gallery-2.jpg",
-  },
-  {
-    title: "Aktivitas Kami",
-    image: "/images/gallery-3.jpg",
-  },
-  {
-    title: "Momen Bersama Pelanggan",
-    image: "/images/gallery-4.jpg",
-  },
-  {
-    title: "Koleksi Kami",
-    image: "/images/gallery-5.jpg",
-  },
-  {
-    title: "Di Balik Aktivitas Kami",
-    image: "/images/gallery-6.jpg",
-  },
-];
+const gallery = (await getCollection("gallery"))
+  .filter((item) => item.data.active)
+  .sort((a, b) => a.data.order - b.data.order);
 ---
 
 <BaseLayout
@@ -37,9 +15,7 @@ const galleryItems = [
     <div class="container">
       <p class="eyebrow">Gallery</p>
 
-      <h1>
-        Sekilas tentang Bunga Ice
-      </h1>
+      <h1>Sekilas tentang Bunga Ice</h1>
 
       <p>
         Kumpulan foto yang menampilkan produk, aktivitas,
@@ -50,23 +26,35 @@ const galleryItems = [
 
   <section class="section gallery-section">
     <div class="container">
-      <div class="gallery-grid">
-        {
-          galleryItems.map((item) => (
-            <article class="gallery-item">
-              <img
-                src={item.image}
-                alt={item.title}
-                loading="lazy"
-              />
+      {
+        gallery.length > 0 ? (
+          <div class="gallery-grid">
+            {gallery.map((item) => (
+              <article class="gallery-item">
+                <div class="gallery-image">
+                  <img
+                    src={item.data.image}
+                    alt={item.data.title}
+                    loading="lazy"
+                  />
+                </div>
 
-              <div class="gallery-caption">
-                <h2>{item.title}</h2>
-              </div>
-            </article>
-          ))
-        }
-      </div>
+                <div class="gallery-content">
+                  <h2>{item.data.title}</h2>
+
+                  {item.data.description && (
+                    <p>{item.data.description}</p>
+                  )}
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div class="empty-state">
+            <p>Belum ada foto yang tersedia.</p>
+          </div>
+        )
+      }
     </div>
   </section>
 </BaseLayout>
@@ -96,8 +84,82 @@ const galleryItems = [
 
   .gallery-grid {
     display: grid;
-    gap: 18px;
+    gap: 20px;
   }
 
   .gallery-item {
-    position:
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .gallery-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .gallery-image {
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: var(--color-muted);
+  }
+
+  .gallery-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 300ms ease;
+  }
+
+  .gallery-item:hover .gallery-image img {
+    transform: scale(1.03);
+  }
+
+  .gallery-content {
+    padding: 24px;
+  }
+
+  .gallery-content h2 {
+    margin-bottom: 8px;
+    font-size: 1.25rem;
+  }
+
+  .gallery-content p {
+    margin-bottom: 0;
+    color: var(--color-text-soft);
+  }
+
+  .empty-state {
+    padding: 60px 20px;
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    text-align: center;
+  }
+
+  .empty-state p {
+    margin-bottom: 0;
+    color: var(--color-text-soft);
+  }
+
+  @media (min-width: 700px) {
+    .page-hero {
+      padding-block: 120px 90px;
+    }
+
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .gallery-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>
