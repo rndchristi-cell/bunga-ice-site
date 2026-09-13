@@ -1,17 +1,167 @@
 ---
-
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Services from "../components/Services.astro";
+import Gallery from "../components/Gallery.astro";
+import LatestArticles from "../components/LatestArticles.astro";
+import ContactCTA from "../components/ContactCTA.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="Bunga Ice"
+  description="Bunga Ice — informasi, layanan, dan cerita kami."
+>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <p class="eyebrow">Selamat datang di Bunga Ice</p>
+
+        <h1>
+          Ruang untuk mengenal
+          <span>Bunga Ice</span>
+        </h1>
+
+        <p class="hero-description">
+          Temukan informasi tentang kami, layanan yang kami tawarkan,
+          berbagai cerita, serta artikel yang kami bagikan.
+        </p>
+
+        <div class="hero-actions">
+          <a href="/services/" class="button button-primary">
+            Lihat Layanan
+          </a>
+
+          <a href="/about/" class="button button-secondary">
+            Tentang Kami
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-card">
+          <span>BI</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Tentang Kami</p>
+
+        <h2>
+          Lebih dari sekadar sebuah website
+        </h2>
+
+        <p>
+          Bagian ini nantinya akan berisi cerita singkat mengenai
+          Bunga Ice, latar belakang, nilai yang kami pegang, dan
+          apa yang membuat kami berbeda.
+        </p>
+      </div>
+    </div>
+  </section>
+  <Services />
+<Gallery />
+<LatestArticles />
+<ContactCTA />
+</BaseLayout>
+
+<style>
+  .hero {
+    overflow: hidden;
+    padding-block: 72px;
+  }
+
+  .hero-grid {
+    display: grid;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .hero-content {
+    max-width: 680px;
+  }
+
+  .eyebrow {
+    margin-bottom: 14px;
+    color: var(--color-primary);
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .hero h1 {
+    max-width: 720px;
+    margin-bottom: 22px;
+    font-size: clamp(2.7rem, 8vw, 5rem);
+    letter-spacing: -0.05em;
+  }
+
+  .hero h1 span {
+    color: var(--color-primary);
+  }
+
+  .hero-description {
+    max-width: 600px;
+    margin-bottom: 30px;
+    color: var(--color-text-soft);
+    font-size: 1.1rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-card {
+    display: grid;
+    width: min(100%, 420px);
+    aspect-ratio: 1;
+    place-items: center;
+    border-radius: 32px;
+    background:
+      radial-gradient(
+        circle at 30% 25%,
+        rgba(255, 255, 255, 0.8),
+        transparent 30%
+      ),
+      linear-gradient(
+        135deg,
+        #f3d5c4,
+        #d98a63
+      );
+    box-shadow: var(--shadow-md);
+    transform: rotate(2deg);
+  }
+
+  .hero-card span {
+    display: grid;
+    width: 130px;
+    height: 130px;
+    place-items: center;
+    border: 8px solid rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 900;
+  }
+
+  @media (min-width: 768px) {
+    .hero {
+      padding-block: 110px;
+    }
+
+    .hero-grid {
+      grid-template-columns: 1.1fr 0.9fr;
+    }
+  }
+</style>

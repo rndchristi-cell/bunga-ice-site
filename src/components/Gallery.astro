@@ -1,0 +1,132 @@
+---
+const galleryItems = [
+  {
+    title: "Suasana Bunga Ice",
+    image: "/images/gallery-1.jpg",
+  },
+  {
+    title: "Produk Unggulan",
+    image: "/images/gallery-2.jpg",
+  },
+  {
+    title: "Aktivitas Kami",
+    image: "/images/gallery-3.jpg",
+  },
+  {
+    title: "Momen Bersama Pelanggan",
+    image: "/images/gallery-4.jpg",
+  },
+];
+---
+
+<section class="gallery-section section" id="gallery">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Gallery</p>
+
+      <h2>
+        Lihat lebih dekat Bunga Ice
+      </h2>
+
+      <p>
+        Beberapa foto yang menggambarkan produk, aktivitas,
+        suasana, dan berbagai momen dari Bunga Ice.
+      </p>
+    </div>
+
+    <div class="gallery-grid">
+      {
+        galleryItems.map((item) => (
+          <article class="gallery-item">
+            <img
+              src={item.image}
+              alt={item.title}
+              loading="lazy"
+            />
+
+            <div class="gallery-caption">
+              <h3>{item.title}</h3>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .gallery-section {
+    background: var(--color-bg);
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .gallery-item {
+    position: relative;
+    min-height: 260px;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background: var(--color-muted);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    min-height: 260px;
+    object-fit: cover;
+    transition: transform 350ms ease;
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.04);
+  }
+
+  .gallery-caption {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 40px 22px 20px;
+    background: linear-gradient(
+      to top,
+      rgba(43, 33, 24, 0.75),
+      transparent
+    );
+  }
+
+  .gallery-caption h3 {
+    margin: 0;
+    color: #fff;
+    font-size: 1.05rem;
+  }
+
+  @media (min-width: 600px) {
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-item:first-child {
+      grid-row: span 2;
+      min-height: 538px;
+    }
+
+    .gallery-item:first-child img {
+      min-height: 538px;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .gallery-grid {
+      grid-template-columns: 1.2fr 1fr 1fr;
+    }
+
+    .gallery-item:first-child {
+      grid-row: span 2;
+    }
+  }
+</style>

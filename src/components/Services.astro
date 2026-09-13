@@ -1,0 +1,127 @@
+---
+const services = [
+  {
+    number: "01",
+    title: "Layanan Utama",
+    description:
+      "Deskripsi singkat mengenai layanan utama yang ditawarkan kepada pelanggan.",
+  },
+  {
+    number: "02",
+    title: "Produk Unggulan",
+    description:
+      "Tampilkan produk atau penawaran yang menjadi salah satu pilihan utama pelanggan.",
+  },
+  {
+    number: "03",
+    title: "Solusi untuk Anda",
+    description:
+      "Jelaskan bagaimana layanan atau produk kami dapat membantu memenuhi kebutuhan pelanggan.",
+  },
+];
+---
+
+<section class="services-section section" id="services">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Layanan &amp; Produk</p>
+
+      <h2>
+        Apa yang kami tawarkan
+      </h2>
+
+      <p>
+        Kenali layanan, produk, atau penawaran unggulan yang tersedia
+        untuk pelanggan kami.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      {
+        services.map((service) => (
+          <article class="service-card">
+            <span class="service-number">{service.number}</span>
+
+            <h3>{service.title}</h3>
+
+            <p>{service.description}</p>
+
+            <a href="/services/" class="service-link">
+              Selengkapnya
+              <span aria-hidden="true">→</span>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-section {
+    background: var(--color-muted);
+  }
+
+  .services-grid {
+    display: grid;
+    gap: 18px;
+  }
+
+  .service-card {
+    position: relative;
+    padding: 30px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .service-number {
+    display: inline-flex;
+    margin-bottom: 34px;
+    color: var(--color-primary);
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+  }
+
+  .service-card h3 {
+    margin-bottom: 12px;
+    font-size: 1.35rem;
+  }
+
+  .service-card p {
+    margin-bottom: 24px;
+    color: var(--color-text-soft);
+  }
+
+  .service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  .service-link span {
+    transition: transform 180ms ease;
+  }
+
+  .service-link:hover span {
+    transform: translateX(4px);
+  }
+
+  @media (min-width: 700px) {
+    .services-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

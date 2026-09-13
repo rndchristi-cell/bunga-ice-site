@@ -1,0 +1,154 @@
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="/" class="brand">
+        <span class="brand-mark">BI</span>
+        <span class="brand-name">Bunga Ice</span>
+      </a>
+
+      <p>
+        Cerita, informasi, dan layanan Bunga Ice untuk Anda.
+      </p>
+    </div>
+
+    <div>
+      <h2>Menu</h2>
+
+      <nav aria-label="Footer navigation">
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Layanan</a>
+        <a href="/gallery/">Gallery</a>
+        <a href="/blog/">Blog</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+
+    <div>
+      <h2>Hubungi Kami</h2>
+
+      <div class="footer-contact">
+        <p>Indonesia</p>
+        <a href="mailto:hello@bungaice.example">
+          hello@bungaice.example
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>
+      © {new Date().getFullYear()} Bunga Ice. All rights reserved.
+    </p>
+
+    <a href="/privacy/">Privacy</a>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: 0;
+    padding-top: 64px;
+    background: #2b2118;
+    color: #fff;
+  }
+
+  .footer-grid {
+    display: grid;
+    gap: 40px;
+    padding-bottom: 48px;
+  }
+
+  .footer-brand {
+    max-width: 340px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+  }
+
+  .brand-mark {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    place-items: center;
+    border-radius: 12px;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 0.85rem;
+  }
+
+  .brand-name {
+    font-size: 1.1rem;
+  }
+
+  .footer-brand p {
+    margin-top: 18px;
+    margin-bottom: 0;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .site-footer h2 {
+    margin-bottom: 16px;
+    font-size: 1rem;
+  }
+
+  .site-footer nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .site-footer nav a,
+  .footer-contact a {
+    color: rgba(255, 255, 255, 0.72);
+    transition: color 180ms ease;
+  }
+
+  .site-footer nav a:hover,
+  .footer-contact a:hover {
+    color: #fff;
+  }
+
+  .footer-contact p {
+    margin-bottom: 8px;
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .footer-bottom {
+    display: flex;
+    padding-block: 22px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .footer-bottom p,
+  .footer-bottom a {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.58);
+    font-size: 0.85rem;
+  }
+
+  .footer-bottom a:hover {
+    color: #fff;
+  }
+
+  @media (min-width: 700px) {
+    .footer-grid {
+      grid-template-columns: 1.5fr 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .footer-bottom {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>
