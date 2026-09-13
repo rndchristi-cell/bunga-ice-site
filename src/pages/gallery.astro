@@ -1,0 +1,103 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const galleryItems = [
+  {
+    title: "Suasana Bunga Ice",
+    image: "/images/gallery-1.jpg",
+  },
+  {
+    title: "Produk Unggulan",
+    image: "/images/gallery-2.jpg",
+  },
+  {
+    title: "Aktivitas Kami",
+    image: "/images/gallery-3.jpg",
+  },
+  {
+    title: "Momen Bersama Pelanggan",
+    image: "/images/gallery-4.jpg",
+  },
+  {
+    title: "Koleksi Kami",
+    image: "/images/gallery-5.jpg",
+  },
+  {
+    title: "Di Balik Aktivitas Kami",
+    image: "/images/gallery-6.jpg",
+  },
+];
+---
+
+<BaseLayout
+  title="Gallery | Bunga Ice"
+  description="Lihat berbagai foto produk, aktivitas, dan momen Bunga Ice."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Gallery</p>
+
+      <h1>
+        Sekilas tentang Bunga Ice
+      </h1>
+
+      <p>
+        Kumpulan foto yang menampilkan produk, aktivitas,
+        suasana, dan berbagai momen Bunga Ice.
+      </p>
+    </div>
+  </section>
+
+  <section class="section gallery-section">
+    <div class="container">
+      <div class="gallery-grid">
+        {
+          galleryItems.map((item) => (
+            <article class="gallery-item">
+              <img
+                src={item.image}
+                alt={item.title}
+                loading="lazy"
+              />
+
+              <div class="gallery-caption">
+                <h2>{item.title}</h2>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding-block: 90px 70px;
+  }
+
+  .page-hero h1 {
+    max-width: 760px;
+    margin-bottom: 20px;
+    font-size: clamp(2.6rem, 7vw, 4.5rem);
+    letter-spacing: -0.05em;
+  }
+
+  .page-hero > .container > p:last-child {
+    max-width: 650px;
+    margin-bottom: 0;
+    color: var(--color-text-soft);
+    font-size: 1.1rem;
+  }
+
+  .gallery-section {
+    background: var(--color-muted);
+  }
+
+  .gallery-grid {
+    display: grid;
+    gap: 18px;
+  }
+
+  .gallery-item {
+    position:

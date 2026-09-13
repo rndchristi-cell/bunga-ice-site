@@ -1,0 +1,157 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const services = [
+  {
+    number: "01",
+    title: "Layanan Utama",
+    description:
+      "Informasi mengenai layanan utama yang tersedia untuk pelanggan.",
+  },
+  {
+    number: "02",
+    title: "Produk Unggulan",
+    description:
+      "Pilihan produk atau penawaran yang menjadi salah satu unggulan Bunga Ice.",
+  },
+  {
+    number: "03",
+    title: "Solusi untuk Anda",
+    description:
+      "Pilihan layanan atau produk yang dapat disesuaikan dengan kebutuhan pelanggan.",
+  },
+];
+---
+
+<BaseLayout
+  title="Layanan | Bunga Ice"
+  description="Lihat layanan dan produk unggulan yang ditawarkan Bunga Ice."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Layanan & Produk</p>
+
+      <h1>
+        Apa yang kami tawarkan
+      </h1>
+
+      <p>
+        Kenali berbagai layanan, produk, dan penawaran yang tersedia
+        dari Bunga Ice.
+      </p>
+    </div>
+  </section>
+
+  <section class="section services-section">
+    <div class="container">
+      <div class="services-grid">
+        {
+          services.map((service) => (
+            <article class="service-card">
+              <span class="service-number">{service.number}</span>
+
+              <h2>{service.title}</h2>
+
+              <p>{service.description}</p>
+
+              <a href="/contact/" class="service-link">
+                Tanya lebih lanjut
+                <span aria-hidden="true">→</span>
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding-block: 90px 70px;
+  }
+
+  .page-hero h1 {
+    max-width: 760px;
+    margin-bottom: 20px;
+    font-size: clamp(2.6rem, 7vw, 4.5rem);
+    letter-spacing: -0.05em;
+  }
+
+  .page-hero > .container > p:last-child {
+    max-width: 650px;
+    margin-bottom: 0;
+    color: var(--color-text-soft);
+    font-size: 1.1rem;
+  }
+
+  .services-section {
+    background: var(--color-muted);
+  }
+
+  .services-grid {
+    display: grid;
+    gap: 20px;
+  }
+
+  .service-card {
+    padding: 32px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .service-number {
+    display: inline-block;
+    margin-bottom: 36px;
+    color: var(--color-primary);
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+  }
+
+  .service-card h2 {
+    margin-bottom: 12px;
+    font-size: 1.5rem;
+  }
+
+  .service-card p {
+    margin-bottom: 24px;
+    color: var(--color-text-soft);
+  }
+
+  .service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  .service-link span {
+    transition: transform 180ms ease;
+  }
+
+  .service-link:hover span {
+    transform: translateX(4px);
+  }
+
+  @media (min-width: 700px) {
+    .page-hero {
+      padding-block: 120px 90px;
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

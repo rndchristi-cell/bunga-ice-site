@@ -1,0 +1,155 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Tentang Kami | Bunga Ice"
+  description="Kenali lebih dekat Bunga Ice, cerita kami, dan apa yang kami tawarkan."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Tentang Kami</p>
+
+      <h1>
+        Mengenal Bunga Ice lebih dekat
+      </h1>
+
+      <p>
+        Cerita, nilai, dan perjalanan Bunga Ice dalam menghadirkan
+        produk serta layanan untuk pelanggan.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container content-grid">
+      <div>
+        <p class="eyebrow">Cerita Kami</p>
+        <h2>Lebih dari sekadar sebuah nama</h2>
+      </div>
+
+      <div class="content">
+        <p>
+          Bunga Ice hadir untuk memberikan pengalaman yang baik bagi
+          pelanggan melalui produk, layanan, dan informasi yang kami
+          bagikan.
+        </p>
+
+        <p>
+          Halaman ini nantinya dapat dikembangkan menjadi cerita yang
+          lebih lengkap mengenai latar belakang, perjalanan, nilai,
+          serta hal-hal yang membuat Bunga Ice berbeda.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section values">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Nilai Kami</p>
+        <h2>Apa yang kami pegang</h2>
+      </div>
+
+      <div class="value-grid">
+        <article>
+          <h3>Kualitas</h3>
+          <p>
+            Berusaha memberikan produk dan layanan dengan kualitas
+            yang baik.
+          </p>
+        </article>
+
+        <article>
+          <h3>Pelayanan</h3>
+          <p>
+            Mengutamakan komunikasi dan pengalaman yang baik bagi
+            pelanggan.
+          </p>
+        </article>
+
+        <article>
+          <h3>Kepercayaan</h3>
+          <p>
+            Membangun hubungan jangka panjang melalui pelayanan yang
+            jujur dan bertanggung jawab.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding-block: 90px 70px;
+  }
+
+  .page-hero h1 {
+    max-width: 760px;
+    margin-bottom: 20px;
+    font-size: clamp(2.6rem, 7vw, 4.5rem);
+    letter-spacing: -0.05em;
+  }
+
+  .page-hero > .container > p:last-child {
+    max-width: 650px;
+    margin-bottom: 0;
+    color: var(--color-text-soft);
+    font-size: 1.1rem;
+  }
+
+  .content-grid {
+    display: grid;
+    gap: 40px;
+  }
+
+  .content-grid h2 {
+    margin-bottom: 0;
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+
+  .content p {
+    color: var(--color-text-soft);
+  }
+
+  .values {
+    background: var(--color-muted);
+  }
+
+  .value-grid {
+    display: grid;
+    gap: 18px;
+  }
+
+  .value-grid article {
+    padding: 28px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+  }
+
+  .value-grid h3 {
+    margin-bottom: 10px;
+  }
+
+  .value-grid p {
+    margin-bottom: 0;
+    color: var(--color-text-soft);
+  }
+
+  @media (min-width: 768px) {
+    .page-hero {
+      padding-block: 120px 90px;
+    }
+
+    .content-grid {
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 80px;
+    }
+
+    .value-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>
