@@ -8,7 +8,7 @@ const articles = (await getCollection("articles"))
 
 <section class="articles-section section" id="articles">
   <div class="container">
-    <div class="section-heading articles-heading">
+    <div class="section-heading articles-heading" data-reveal>
       <div>
         <p class="eyebrow">Artikel Terbaru</p>
 
@@ -31,8 +31,12 @@ const articles = (await getCollection("articles"))
     <div class="articles-grid">
       {
         articles.length > 0 ? (
-          articles.map((article) => (
-            <article class="article-card">
+          articles.map((article, index) => (
+            <article
+              class="article-card"
+              data-reveal
+              style={`--reveal-delay: ${index * 80}ms`}
+            >
               <a href={`/blog/${article.data.slug}/`} class="article-image">
                 {article.data.image ? (
                   <img
@@ -73,7 +77,7 @@ const articles = (await getCollection("articles"))
             </article>
           ))
         ) : (
-          <div class="empty-state">
+          <div class="empty-state" data-reveal>
             <p>Belum ada artikel yang tersedia.</p>
           </div>
         )
