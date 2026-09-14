@@ -1,12 +1,15 @@
 :root {
-  --color-bg: #fffaf5;
+  /* Cheerful F&B palette: citrus orange, sunshine yellow, fresh mint, cream, cocoa */
+  --color-bg: #fff8e8;
   --color-surface: #ffffff;
-  --color-text: #2b2118;
-  --color-text-soft: #6f6257;
-  --color-primary: #b85c38;
-  --color-primary-dark: #8f4025;
-  --color-border: #eadfd5;
-  --color-muted: #f4ece5;
+  --color-text: #3a2a22;
+  --color-text-soft: #75645a;
+  --color-primary: #f26a2e;
+  --color-primary-dark: #d94f18;
+  --color-secondary: #f7c843;
+  --color-accent: #58b89b;
+  --color-border: #f0dfbd;
+  --color-muted: #fff0c9;
 
   --font-sans:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
@@ -17,8 +20,8 @@
   --radius-md: 14px;
   --radius-lg: 24px;
 
-  --shadow-sm: 0 4px 18px rgba(43, 33, 24, 0.06);
-  --shadow-md: 0 12px 35px rgba(43, 33, 24, 0.1);
+  --shadow-sm: 0 4px 18px rgba(58, 42, 34, 0.07);
+  --shadow-md: 0 12px 35px rgba(58, 42, 34, 0.12);
 }
 
 /* Reset */
