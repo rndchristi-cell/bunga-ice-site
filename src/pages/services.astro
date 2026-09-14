@@ -40,6 +40,7 @@ const services = (await getCollection("services"))
                     src={service.data.image}
                     alt={service.data.title}
                     class="service-image"
+                    loading="lazy"
                   />
                 )}
 
@@ -121,11 +122,14 @@ const services = (await getCollection("services"))
   }
 
   .service-image {
+    display: block;
     width: 100%;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 4 / 3;
     object-fit: cover;
+    object-position: center;
     margin-bottom: 24px;
     border-radius: var(--radius-md);
+    background: var(--color-muted);
   }
 
   .service-card h2 {
