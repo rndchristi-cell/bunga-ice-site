@@ -1,12 +1,13 @@
 ---
-title: "Mengenal Bunga Ice Lebih Dekat"
-slug: "mengenal-bunga-ice"
+title: Mengenal Bunga Ice Lebih Dekat
+slug: mengenal-bunga-ice
 date: 2026-09-12
-category: "Tentang Kami"
-excerpt: "Cerita singkat tentang Bunga Ice, latar belakang, dan apa yang kami tawarkan."
-image: "/images/article-1.jpg"
-seoTitle: "Mengenal Bunga Ice Lebih Dekat"
-seoDescription: "Kenali Bunga Ice lebih dekat melalui cerita, latar belakang, dan informasi mengenai kami."
+category: Tentang Kami
+excerpt: Cerita singkat tentang Bunga Ice, latar belakang, dan apa yang kami tawarkan.
+image: /images/130575.webp
+seoTitle: Mengenal Bunga Ice Lebih Dekat
+seoDescription: Kenali Bunga Ice lebih dekat melalui cerita, latar belakang, dan
+  informasi mengenai kami.
 ---
 
 # Mengenal Bunga Ice Lebih Dekat
