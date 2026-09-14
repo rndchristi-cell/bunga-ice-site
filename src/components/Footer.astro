@@ -57,8 +57,8 @@
   .site-footer {
     margin-top: 0;
     padding-top: 64px;
-    background: #2b2118;
-    color: #fff;
+    background: var(--color-text);
+    color: var(--color-bg);
   }
 
   .footer-grid {
@@ -75,6 +75,7 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
+    color: var(--color-bg);
     font-weight: 800;
   }
 
@@ -87,6 +88,7 @@
     background: var(--color-primary);
     color: #fff;
     font-size: 0.85rem;
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.14);
   }
 
   .brand-name {
@@ -96,11 +98,12 @@
   .footer-brand p {
     margin-top: 18px;
     margin-bottom: 0;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 248, 232, 0.72);
   }
 
   .site-footer h2 {
     margin-bottom: 16px;
+    color: var(--color-secondary);
     font-size: 1rem;
   }
 
@@ -113,13 +116,13 @@
 
   .site-footer nav a,
   .footer-contact a {
-    color: rgba(255, 255, 255, 0.72);
+    color: rgba(255, 248, 232, 0.72);
     transition: color 180ms ease;
   }
 
   .site-footer nav a:hover,
   .footer-contact a:hover {
-    color: #fff;
+    color: var(--color-secondary);
   }
 
   .footer-contact {
@@ -131,7 +134,16 @@
 
   .footer-contact p {
     margin-bottom: 0;
-    color: rgba(255, 255, 255, 0.72);
+    color: rgba(255, 248, 232, 0.72);
+  }
+
+  .footer-contact a:last-child {
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  .footer-contact a:last-child:hover {
+    color: var(--color-secondary);
   }
 
   .footer-bottom {
@@ -140,18 +152,18 @@
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-top: 1px solid rgba(255, 248, 232, 0.14);
   }
 
   .footer-bottom p,
   .footer-bottom a {
     margin: 0;
-    color: rgba(255, 255, 255, 0.58);
+    color: rgba(255, 248, 232, 0.58);
     font-size: 0.85rem;
   }
 
   .footer-bottom a:hover {
-    color: #fff;
+    color: var(--color-secondary);
   }
 
   @media (min-width: 700px) {
