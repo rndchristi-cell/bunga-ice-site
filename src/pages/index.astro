@@ -36,9 +36,16 @@ import ContactCTA from "../components/ContactCTA.astro";
         </div>
       </div>
 
-      <div class="hero-visual" data-reveal="image" aria-hidden="true">
+      <div class="hero-visual" data-reveal="image">
         <div class="hero-card">
-          <span>BI</span>
+          <img
+            src="/images/hero-image.webp"
+            width="1920"
+            height="1080"
+            alt="Bunga Ice"
+            loading="eager"
+            fetchpriority="high"
+          />
         </div>
       </div>
     </div>
@@ -123,37 +130,20 @@ import ContactCTA from "../components/ContactCTA.astro";
   }
 
   .hero-card {
-    display: grid;
-    width: min(100%, 420px);
-    aspect-ratio: 1;
-    place-items: center;
+    width: min(100%, 560px);
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
     border-radius: 32px;
-    background:
-      radial-gradient(
-        circle at 30% 25%,
-        rgba(255, 255, 255, 0.85),
-        transparent 30%
-      ),
-      linear-gradient(
-        135deg,
-        #ffe58a,
-        var(--color-primary)
-      );
+    background: var(--color-muted);
     box-shadow: var(--shadow-md);
     transform: rotate(2deg);
   }
 
-  .hero-card span {
-    display: grid;
-    width: 130px;
-    height: 130px;
-    place-items: center;
-    border: 8px solid rgba(255, 255, 255, 0.8);
-    border-radius: 50%;
-    background: var(--color-accent);
-    color: #ffffff;
-    font-size: 2rem;
-    font-weight: 900;
+  .hero-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   @media (min-width: 768px) {
