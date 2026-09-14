@@ -2,6 +2,8 @@ backend:
   name: github
   repo: rndchristi-cell/bunga-ice-site
   branch: main
+  base_url: https://bunga-ice-oauth.rendychristi.workers.dev
+  auth_endpoint: auth
 
 media_folder: "public/images"
 public_folder: "/images"
