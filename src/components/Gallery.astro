@@ -21,7 +21,7 @@ const galleryItems = [
 
 <section class="gallery-section section" id="gallery">
   <div class="container">
-    <div class="section-heading">
+    <div class="section-heading" data-reveal>
       <p class="eyebrow">Gallery</p>
 
       <h2>
@@ -36,8 +36,12 @@ const galleryItems = [
 
     <div class="gallery-grid">
       {
-        galleryItems.map((item) => (
-          <article class="gallery-item">
+        galleryItems.map((item, index) => (
+          <article
+            class="gallery-item"
+            data-reveal="image"
+            style={`--reveal-delay: ${index * 70}ms`}
+          >
             <div class="gallery-image">
               <img
                 src={item.image}
