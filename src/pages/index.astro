@@ -12,7 +12,7 @@ import ContactCTA from "../components/ContactCTA.astro";
 >
   <section class="hero">
     <div class="container hero-grid">
-      <div class="hero-content">
+      <div class="hero-content" data-reveal>
         <p class="eyebrow">Selamat datang di Bunga Ice</p>
 
         <h1>
@@ -36,7 +36,7 @@ import ContactCTA from "../components/ContactCTA.astro";
         </div>
       </div>
 
-      <div class="hero-visual" aria-hidden="true">
+      <div class="hero-visual" data-reveal="image" aria-hidden="true">
         <div class="hero-card">
           <span>BI</span>
         </div>
@@ -46,7 +46,7 @@ import ContactCTA from "../components/ContactCTA.astro";
 
   <section class="section">
     <div class="container">
-      <div class="section-heading">
+      <div class="section-heading" data-reveal>
         <p class="eyebrow">Tentang Kami</p>
 
         <h2>
@@ -61,10 +61,11 @@ import ContactCTA from "../components/ContactCTA.astro";
       </div>
     </div>
   </section>
+
   <Services />
-<Gallery />
-<LatestArticles />
-<ContactCTA />
+  <Gallery />
+  <LatestArticles />
+  <ContactCTA />
 </BaseLayout>
 
 <style>
