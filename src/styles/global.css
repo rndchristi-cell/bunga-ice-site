@@ -1,15 +1,15 @@
 :root {
-  /* Cheerful F&B palette: citrus orange, sunshine yellow, fresh mint, cream, cocoa */
-  --color-bg: #fff8e8;
-  --color-surface: #ffffff;
+  /* Warm-white F&B palette: clean base, cheerful cards, citrus accents */
+  --color-bg: #fffdf9;
+  --color-surface: #fff4dc;
   --color-text: #3a2a22;
   --color-text-soft: #75645a;
   --color-primary: #f26a2e;
   --color-primary-dark: #d94f18;
   --color-secondary: #f7c843;
   --color-accent: #58b89b;
-  --color-border: #f0dfbd;
-  --color-muted: #fff0c9;
+  --color-border: #efd9b2;
+  --color-muted: #fff0cf;
 
   --font-sans:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
