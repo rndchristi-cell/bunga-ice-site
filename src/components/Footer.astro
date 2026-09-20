@@ -2,8 +2,11 @@
   <div class="container footer-grid">
     <div class="footer-brand">
       <a href="/" class="brand">
-        <span class="brand-mark">BI</span>
-        <span class="brand-name">Bunga Ice</span>
+        <img
+          src="/images/bunga-ice-logo.svg"
+          alt="Bunga Ice"
+          class="brand-logo"
+        />
       </a>
 
       <p>
@@ -79,20 +82,13 @@
     font-weight: 800;
   }
 
-  .brand-mark {
-    display: grid;
-    width: 40px;
-    height: 40px;
-    place-items: center;
-    border-radius: 12px;
-    background: var(--color-primary);
-    color: #fff;
-    font-size: 0.85rem;
-    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.14);
-  }
-
-  .brand-name {
-    font-size: 1.1rem;
+  .brand-logo {
+    display: block;
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    object-fit: contain;
+    object-position: center;
   }
 
   .footer-brand p {
